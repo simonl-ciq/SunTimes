@@ -1,0 +1,19 @@
+<resources>
+	<strings>
+		<string id="inAtTitle">Zeit bis Sonnenaufgang/-untergang oder Uhrzeit des Sonnenaufgangs/-untergangs</string>
+		<string id="showIn">Zeit bis</string>
+		<string id="showAt">Uhrzeit</string>
+		<string id="blControlTitle">Hintergrundbeleuchtung</string>
+		<string id="disable">Deaktivieren</string>
+		<string id="enable">Aktivieren</string>
+		<string id="blOffsetTitle">Schalten Sie die Hintergrundbeleuchtung ein / aus</string>
+		<string id="minusThirty">30 Minuten vor Sonnenuntergang und nach S.aufgang</string>
+		<string id="minusTwenty">20 Minuten vor Sonnenuntergang und nach S.aufgang</string>
+		<string id="minusTen">10 Minuten vor Sonnenuntergang und nach S.aufgang</string>
+		<string id="zero">Bei Sonnenuntergang / -untergang</string>
+		<string id="ten">10 Minuten nach Sonnenuntergang und vor S.aufgang</string>
+		<string id="twenty">20 Minuten nach Sonnenuntergang und vor S.aufgang</string>
+		<string id="thirty">30 Minuten nach Sonnenuntergang und vor S.aufgang</string>
+		<string id="notAvailable">Nicht verfügbar</string>
+	</strings>
+</resources>

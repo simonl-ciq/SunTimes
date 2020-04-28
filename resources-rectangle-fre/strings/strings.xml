@@ -1,0 +1,10 @@
+<strings>
+    <string id="AppName">Simply Sun Time</string>
+    <string id="NoData">Pas de signal GPS</string>
+    <string id="Sunrise">Lever de soleil</string>
+    <string id="Sunset">Coucher de soleil</string>
+    <string id="NoDataAlt">Pas de GPS</string>
+    <string id="SunriseAlt">Lever sol.</string>
+    <string id="SunsetAlt">Coucher sol.</string>
+    <string id="In">en</string>
+</strings>

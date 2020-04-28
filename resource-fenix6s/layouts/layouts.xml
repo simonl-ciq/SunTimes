@@ -1,0 +1,35 @@
+<layouts>
+    <!-- A generic, centered layout. -->
+    <layout id="MainLayout">
+        <drawable class="Background" />
+        <label id="label" x="center" y="8" color="Graphics.COLOR_BLACK" justification="Graphics.TEXT_JUSTIFY_CENTER" font="Graphics.FONT_TINY" />
+        <label id="value" x="center" y="center" color="Graphics.COLOR_BLACK" justification="Graphics.TEXT_JUSTIFY_CENTER" font="Graphics.FONT_NUMBER_THAI_HOT" />
+        <label id="meridiem" x="213" y="88" color="Graphics.COLOR_BLACK" justification="Graphics.TEXT_JUSTIFY_LEFT" font="Graphics.FONT_XTINY" />
+    </layout>
+
+    <!-- Layouts used for the for the four quadrants. -->
+    <layout id="TopLeftLayout">
+        <drawable class="Background" />
+        <label id="label" x="67" y="48" color="Graphics.COLOR_BLACK" justification="Graphics.TEXT_JUSTIFY_CENTER" font="Graphics.FONT_TINY" />
+        <label id="value" x="21" y="70" color="Graphics.COLOR_BLACK" justification="Graphics.TEXT_JUSTIFY_LEFT" font="Graphics.FONT_NUMBER_MILD" />
+        <label id="meridiem" x="100" y="80" color="Graphics.COLOR_BLACK" justification="Graphics.TEXT_JUSTIFY_CENTER" font="Graphics.FONT_XTINY" ></label>
+    </layout>
+    <layout id="TopRightLayout">
+        <drawable class="Background" />
+        <label id="label" x="51" y="48" color="Graphics.COLOR_BLACK" justification="Graphics.TEXT_JUSTIFY_CENTER" font="Graphics.FONT_TINY" />
+        <label id="value" x="5" y="70" color="Graphics.COLOR_BLACK" justification="Graphics.TEXT_JUSTIFY_LEFT" font="Graphics.FONT_NUMBER_MILD" />
+        <label id="meridiem" x="center" y="116" color="Graphics.COLOR_BLACK" justification="Graphics.TEXT_JUSTIFY_CENTER" font="Graphics.FONT_XTINY" />
+    </layout>
+    <layout id="BottomLeftLayout">
+        <drawable class="Background" />
+        <label id="label" x="67" y="0" color="Graphics.COLOR_BLACK" justification="Graphics.TEXT_JUSTIFY_CENTER" font="Graphics.FONT_TINY" />
+        <label id="value" x="21" y="22" color="Graphics.COLOR_BLACK" justification="Graphics.TEXT_JUSTIFY_LEFT" font="Graphics.FONT_NUMBER_MILD" ></label>
+        <label id="meridiem" x="center" y="116" color="Graphics.COLOR_BLACK" justification="Graphics.TEXT_JUSTIFY_CENTER" font="Graphics.FONT_XTINY" />
+    </layout>
+    <layout id="BottomRightLayout">
+        <drawable class="Background" />
+        <label id="label" x="51" y="0" color="Graphics.COLOR_BLACK" justification="Graphics.TEXT_JUSTIFY_CENTER" font="Graphics.FONT_TINY" />
+        <label id="value" x="5" y="22" color="Graphics.COLOR_BLACK" justification="Graphics.TEXT_JUSTIFY_LEFT" font="Graphics.FONT_NUMBER_MILD" />
+        <label id="meridiem" x="center" y="116" color="Graphics.COLOR_BLACK" justification="Graphics.TEXT_JUSTIFY_CENTER" font="Graphics.FONT_XTINY" />
+    </layout>
+</layouts>

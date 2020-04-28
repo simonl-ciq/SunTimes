@@ -1,0 +1,19 @@
+<resources>
+	<strings>
+		<string id="inAtTitle">Le temps jusqu'à ou l'heure du prochain lever / coucher du soleil?</string>
+		<string id="showIn">Temps jusqu'à</string>
+		<string id="showAt">Heure du</string>
+		<string id="blControlTitle">Contrôle du rétroéclairage</string>
+		<string id="disable">Désactiver</string>
+		<string id="enable">Activer</string>
+		<string id="blOffsetTitle">Quand allumer / éteindre le rétro-éclairage</string>
+		<string id="minusThirty">30 minutes avant le coucher / après le lever du soleil</string>
+		<string id="minusTwenty">20 minutes avant le coucher / après le lever du soleil</string>
+		<string id="minusTen">10 minutes avant le coucher / après le lever du soleil</string>
+		<string id="zero">Au coucher / lever du soleil</string>
+		<string id="ten">10 minutes après le coucher / avant le lever du soleil</string>
+		<string id="twenty">20 minutes après le coucher / avant le lever du soleil</string>
+		<string id="thirty">30 minutes après le coucher / avant le lever du soleil</string>
+		<string id="notAvailable">Indisponible</string>
+	</strings>
+</resources>

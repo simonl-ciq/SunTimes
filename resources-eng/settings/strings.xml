@@ -1,0 +1,19 @@
+<resources>
+	<strings>
+		<string id="inAtTitle">Display time until or the time of the next sunset/sunrise</string>
+		<string id="showIn">Time until</string>
+		<string id="showAt">Time of</string>
+		<string id="blControlTitle">Backlight control</string>
+		<string id="disable">Disable</string>
+		<string id="enable">Enable</string>
+		<string id="blOffsetTitle">When to turn backlight on / off again</string>
+		<string id="minusThirty">30 mins before sunset / after sunrise</string>
+		<string id="minusTwenty">20 mins before sunset / after sunrise</string>
+		<string id="minusTen">10 mins before sunset / after sunrise</string>
+		<string id="zero">At sunset / sunrise</string>
+		<string id="ten">10 mins after sunset / before sunrise</string>
+		<string id="twenty">20 mins after sunset / before sunrise</string>
+		<string id="thirty">30 mins after sunset / before sunrise</string>
+		<string id="notAvailable">Not available</string>
+	</strings>
+</resources>
