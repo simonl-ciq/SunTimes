@@ -1,0 +1,22 @@
+<resources>
+	<strings>
+		<string id="civilTitle">Utilice la salida / puesta del sol o el crepúsculo civil</string>
+		<string id="useCivil">Crepúsculo civil</string>
+		<string id="useSun">Salida/puesta del sol</string>
+		<string id="inAtTitle">El tiempo hasta o la hora de la próxima puesta o salida del sol</string>
+		<string id="showIn">Tiempo hasta</string>
+		<string id="showAt">La hora de</string>
+		<string id="blControlTitle">Control de luz de fondo</string>
+		<string id="disable">Desactivar</string>
+		<string id="enable">Activar</string>
+		<string id="blOffsetTitle">Cuándo volver a encender o apagar la luz de fondo</string>
+		<string id="minusThirty">30 mins antes de puesta/después de salida del sol</string>
+		<string id="minusTwenty">20 mins antes de puesta/después de salida del sol</string>
+		<string id="minusTen">10 mins antes de puesta/después de salida del sol</string>
+		<string id="zero">A salida/puesta del sol</string>
+		<string id="ten">10 mins después de puesta/antes de salida del sol</string>
+		<string id="twenty">20 mins después de puesta/antes de salida del sol</string>
+		<string id="thirty">30 mins después de puesta/antes de salida del sol</string>
+		<string id="notAvailable">No disponible</string>
+	</strings>
+</resources>

@@ -7,4 +7,6 @@
     <string id="SunriseAlt">Sunset</string>
     <string id="SunsetAlt">Sunset</string>
     <string id="In">in</string>
+    <string id="Dawn">Dawn</string>
+    <string id="Dusk">Dusk</string>
 </strings>

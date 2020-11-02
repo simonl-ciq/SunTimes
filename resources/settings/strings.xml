@@ -1,6 +1,9 @@
 <resources>
 	<strings>
-		<string id="inAtTitle">Display time until or the time of the next sunset/sunrise</string>
+		<string id="civilTitle">Use time of sunrise/sunset or civil dawn/dusk</string>
+		<string id="useCivil">Civil dawn/dusk</string>
+		<string id="useSun">Sunrise/sunset</string>
+		<string id="inAtTitle">Display time until or time of the next sunset/sunrise</string>
 		<string id="showIn">Time until</string>
 		<string id="showAt">Time of</string>
 		<string id="blControlTitle">Backlight control</string>

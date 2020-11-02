@@ -1,5 +1,8 @@
 <resources>
 	<strings>
+		<string id="civilTitle">Utiliser le lever/coucher du soleil ou le crépuscule civil</string>
+		<string id="useCivil">Crépuscule civile</string>
+		<string id="useSun">Lever/coucher du soleil</string>
 		<string id="inAtTitle">Le temps jusqu'à ou l'heure du prochain lever / coucher du soleil?</string>
 		<string id="showIn">Temps jusqu'à</string>
 		<string id="showAt">Heure du</string>

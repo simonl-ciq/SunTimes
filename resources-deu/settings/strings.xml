@@ -1,5 +1,8 @@
 <resources>
 	<strings>
+		<string id="civilTitle">Verwenden Sie Sonnenaufgang/-untergang oder zivile Dämmerung</string>
+		<string id="useCivil">Zivile Dämmerung</string>
+		<string id="useSun">Sonnenaufgang/-untergang</string>
 		<string id="inAtTitle">Zeit bis Sonnenaufgang/-untergang oder Uhrzeit des Sonnenaufgangs/-untergangs</string>
 		<string id="showIn">Zeit bis</string>
 		<string id="showAt">Uhrzeit</string>
@@ -10,7 +13,7 @@
 		<string id="minusThirty">30 Minuten vor Sonnenuntergang und nach S.aufgang</string>
 		<string id="minusTwenty">20 Minuten vor Sonnenuntergang und nach S.aufgang</string>
 		<string id="minusTen">10 Minuten vor Sonnenuntergang und nach S.aufgang</string>
-		<string id="zero">Bei Sonnenuntergang / -untergang</string>
+		<string id="zero">Bei Sonnenuntergang / -aufgang</string>
 		<string id="ten">10 Minuten nach Sonnenuntergang und vor S.aufgang</string>
 		<string id="twenty">20 Minuten nach Sonnenuntergang und vor S.aufgang</string>
 		<string id="thirty">30 Minuten nach Sonnenuntergang und vor S.aufgang</string>

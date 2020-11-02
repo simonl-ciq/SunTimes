@@ -7,6 +7,7 @@ using Toybox.Time.Gregorian;
 using Toybox.Attention;
 using Toybox.System as Sys;
 
+const cUseCivil = false;
 const cUseIn = true;
 const cBacklightControl = false;
 const cBacklightOffset = 0;
@@ -14,6 +15,9 @@ const cBacklightOffset = 0;
 class SunTimesView extends Ui.DataField {
 	hidden var mLaidOut = false;
 
+	hidden var mRise = SUNRISE;
+	hidden var mSet = SUNSET;
+	
     hidden var mNoMeridiem = false;
     hidden var mWidth;
     hidden var mUseIn = true;
@@ -37,7 +41,20 @@ class SunTimesView extends Ui.DataField {
     function initialize() {
     	var tmpProp;
         DataField.initialize();
+		var mUseCivil = false;
         
+		if ( App has :Properties ) {
+	        tmpProp = Props.getValue("useCivil");
+	    } else {
+	        tmpProp = App.getApp().getProperty("useCivil");
+	    }
+       	mUseCivil = (tmpProp != null && tmpProp instanceof Number) ? (tmpProp != 0) : cUseCivil;
+       	if (mUseCivil) {
+       		mRise = DAWN; mSet = DUSK;
+       	} else {
+       		mRise = SUNRISE; mSet = SUNSET;
+       	}
+
 		if ( App has :Properties ) {
 	        tmpProp = Props.getValue("inAt");
 	    } else {
@@ -60,20 +77,33 @@ class SunTimesView extends Ui.DataField {
        	mBacklightOffset = (tmpProp != null && tmpProp instanceof Number) ? tmpProp.toNumber() : cBacklightOffset;
 
     	var temp;
-        temp = Ui.loadResource( Rez.Strings.NoData );
+        temp = Ui.loadResource( Rez.Strings.NoData);
         if (temp != null ) {NoGPSData = temp;}
-        temp = Ui.loadResource( Rez.Strings.Sunrise );
-        if (temp != null ) {Sunrise = temp;}
-        temp = Ui.loadResource( Rez.Strings.Sunset );
-        if (temp != null ) {Sunset = temp;}
-        temp = Ui.loadResource( Rez.Strings.NoDataAlt );
+        temp = Ui.loadResource( Rez.Strings.NoDataAlt);
         if (temp != null ) {NoGPSDataAlt = temp;}
-        temp = Ui.loadResource( Rez.Strings.SunriseAlt );
-        if (temp != null ) {SunriseAlt = temp;}
-        temp = Ui.loadResource( Rez.Strings.SunsetAlt );
-        if (temp != null ) {SunsetAlt = temp;}
         temp = Ui.loadResource( Rez.Strings.In );
         if (temp != null ) {In = temp;}
+       	if (mUseCivil) {
+	        temp = Ui.loadResource( Rez.Strings.Dawn );
+    	    if (temp != null ) {
+    	    	Sunrise = temp;
+    	    	SunriseAlt = temp;
+    	    }
+        	temp = Ui.loadResource( Rez.Strings.Dusk);
+    	    if (temp != null ) {
+    	    	Sunset = temp;
+    	    	SunsetAlt = temp;
+    	    }
+        } else {
+	        temp = Ui.loadResource( Rez.Strings.Sunrise);
+    	    if (temp != null ) {Sunrise = temp;}
+        	temp = Ui.loadResource( Rez.Strings.SunriseAlt);
+        	if (temp != null ) {SunriseAlt = temp;}
+        	temp = Ui.loadResource( Rez.Strings.Sunset);
+        	if (temp != null ) {Sunset = temp;}
+        	temp = Ui.loadResource( Rez.Strings.SunsetAlt);
+        	if (temp != null ) {SunsetAlt = temp;}
+        }
 
     }
 // ----------------------------------------------
@@ -91,7 +121,7 @@ class SunTimesView extends Ui.DataField {
 	    return adj;
     }
 
-	(:venu)
+	(:venuair)
     function getYAdjust(dc, obscurityFlags) {
     	var adj = -1;
 		if (obscurityFlags == (OBSCURE_TOP | OBSCURE_LEFT | OBSCURE_RIGHT) || obscurityFlags == (OBSCURE_BOTTOM | OBSCURE_LEFT | OBSCURE_RIGHT)) {
@@ -299,6 +329,11 @@ class SunTimesView extends Ui.DataField {
 	    return 10;
     }
 
+	(:venusq)
+    function getYAdjust(dc, obscurityFlags) {
+	    return 20;
+    }
+
 	(:other_rectanglesY)
     function getYAdjust(dc, obscurityFlags) {
 	    return -1;
@@ -339,7 +374,7 @@ class SunTimesView extends Ui.DataField {
 		return myF;
     }
 
-	(:venu)
+	(:venuair)
     function doFont(valueView, ySpace, myF) {
    		if (ySpace > 90) {
 			myF += 1;
@@ -426,7 +461,7 @@ class SunTimesView extends Ui.DataField {
 	    return (height > 90) ? 7 : 2;
     }
 
-	(:venu)
+	(:venuair)
     function getXMXadjust(height) {
 	    var ret = (height > 130) ? 13 : 3;
 		return ret; 
@@ -540,6 +575,11 @@ class SunTimesView extends Ui.DataField {
 	    return ret;
     }
 
+	(:venusq)
+    function getXMXadjust(meridiemView, width, height) {
+	    return -14;
+    }
+
 	(:vivoactive_hr)
     function getXMXadjust(meridiemView, width, height) {
 	    return 4;
@@ -574,7 +614,7 @@ class SunTimesView extends Ui.DataField {
     	return (height > 90) ? -18 : -11;
     }
 
-	(:venu)
+	(:venuair)
     function getXMYadjust(height) {
     var ret;
         if (height <= 130) {
@@ -686,6 +726,11 @@ class SunTimesView extends Ui.DataField {
 		if (height < 80) {y = 8;}
 		else if (height < 110) {y = 12;}
 		return y;
+    }
+
+	(:venusq)
+    function getXMYadjust(width, height) {
+		return 7;
     }
 
 	(:other_rectanglesXM)
@@ -1092,24 +1137,24 @@ class SunTimesView extends Ui.DataField {
 	    		var time_now = Time.now();
 //time_now = time_now.add(new Time.Duration(93740));
 	    		var time_tomorrow = time_now.add(new Time.Duration(Gregorian.SECONDS_PER_DAY));
-	    		var sunrise_time = sc.calculate(time_now, loc[0], loc[1], SUNRISE);
+	    		var sunrise_time = sc.calculate(time_now, loc[0], loc[1], mRise);
 		    	if (sunrise_time == null) {
 		    		return;
 		    	}
 		    	var sunrise_today = sunrise_time;
 		    	if (sunrise_time.lessThan(time_now)) {
-		    		sunrise_time = sc.calculate(time_tomorrow, loc[0], loc[1], SUNRISE);
+		    		sunrise_time = sc.calculate(time_tomorrow, loc[0], loc[1], mRise);
 			    	if (sunrise_time == null) {
 			    		return;
 			    	}
 	    		}
-	    		var sunset_time = sc.calculate(time_now, loc[0], loc[1], SUNSET);
+	    		var sunset_time = sc.calculate(time_now, loc[0], loc[1], mSet);
 		    	if (sunset_time == null) {
 		    		return;
 		    	}
 		    	var sunset_today = sunset_time;
 		    	if (sunset_time.lessThan(time_now)) {
-		    		sunset_time = sc.calculate(time_tomorrow, loc[0], loc[1], SUNSET);
+		    		sunset_time = sc.calculate(time_tomorrow, loc[0], loc[1], mSet);
 			    	if (sunset_time == null) {
 			    		return;
 			    	}
