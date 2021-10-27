@@ -13,6 +13,7 @@ const cBacklightControl = false;
 const cBacklightOffset = 0;
 
 class SunTimesView extends Ui.DataField {
+	hidden var mOnLayoutCalled = false;
 	hidden var mLaidOut = false;
 
 	hidden var mRise = SUNRISE;
@@ -1051,8 +1052,45 @@ class SunTimesView extends Ui.DataField {
     // Set your layout here. Anytime the size of obscurity of
     // the draw context is changed this will be called.
     function onLayout(dc) {
+    	mOnLayoutCalled = true;
     	mLaidOut = false;
     	return true;
+    }
+
+(:not_venuair)
+    function venuBugfix (dc, obscurityFlags, adj) {
+        // Middle sector so we'll use the generic, centered layout shrunk - 5
+        if (obscurityFlags == (OBSCURE_LEFT | OBSCURE_RIGHT)) {
+            View.setLayout(Rez.Layouts.MiddleCentreLayout(dc));
+            adj = getYAdjust(dc, obscurityFlags);
+
+        // Middle sector left so we'll use the generic, centered layout shrunk - 1
+        } else if (obscurityFlags == (OBSCURE_LEFT)) {
+            View.setLayout(Rez.Layouts.MiddleLeftLayout(dc));
+
+        // Middle sector right so we'll use the generic, centered layout shrunk - 4
+        } else if (obscurityFlags == (OBSCURE_RIGHT)) {
+            View.setLayout(Rez.Layouts.MiddleRightLayout(dc));
+        }
+        
+        return adj;
+    }
+
+(:venuair)    
+    function venuBugfix (dc, obscurityFlags, adj) {
+        // Middle sector so we'll use the generic, centered layout shrunk - 5
+        if (dc.getWidth() > 200) {
+            View.setLayout(Rez.Layouts.MiddleCentreLayout(dc));
+            adj = getYAdjust(dc, obscurityFlags);
+
+        // Middle sector left so we'll use the generic, centered layout shrunk - 1
+        // Middle sector right so we'll use the generic, centered layout shrunk - 4
+        // Left & right layouts are the same for venu
+        } else {
+            View.setLayout(Rez.Layouts.MiddleLeftLayout(dc));
+        }
+        
+        return adj;
     }
 
     function myLayout(dc) {
@@ -1076,18 +1114,9 @@ class SunTimesView extends Ui.DataField {
             View.setLayout(Rez.Layouts.TopCentreLayout(dc));
             adj = getYAdjust(dc, obscurityFlags);
 
-        // Middle sector so we'll use the generic, centered layout shrunk - 5
-        } else if (obscurityFlags == (OBSCURE_LEFT | OBSCURE_RIGHT)) {
-            View.setLayout(Rez.Layouts.MiddleCentreLayout(dc));
-            adj = getYAdjust(dc, obscurityFlags);
-
-        // Middle sector left so we'll use the generic, centered layout shrunk - 1
-        } else if (obscurityFlags == (OBSCURE_LEFT)) {
-            View.setLayout(Rez.Layouts.MiddleLeftLayout(dc));
-
-        // Middle sector right so we'll use the generic, centered layout shrunk - 4
-        } else if (obscurityFlags == (OBSCURE_RIGHT)) {
-            View.setLayout(Rez.Layouts.MiddleRightLayout(dc));
+        // Middle sectors so we'll use the generic, centered layout shrunk - 1/4/5
+        } else if (obscurityFlags == (OBSCURE_LEFT | OBSCURE_RIGHT) || obscurityFlags == OBSCURE_LEFT || obscurityFlags == OBSCURE_RIGHT ) {
+            adj = venuBugfix(dc, obscurityFlags, adj);
 
         // Bottom sector so we'll use the generic, centered layout upside down - 13
         } else if (obscurityFlags == (OBSCURE_BOTTOM | OBSCURE_LEFT | OBSCURE_RIGHT)) {
@@ -1221,7 +1250,9 @@ class SunTimesView extends Ui.DataField {
 // manual says OBSCURITY values only valid here but template program puts them in onLayout
 // modify it to call layout, once, from here
 // garmin staff say in forum this issue is being looked at
-		if (!mLaidOut) {
+		if (!mOnLayoutCalled) {
+			return;
+		} else if (!mLaidOut) {
 			mLaidOut = myLayout(dc);
 		}
 		
